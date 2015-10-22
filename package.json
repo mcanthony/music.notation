@@ -1,6 +1,6 @@
 {
   "name": "music.notation",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The pluggable music notation",
   "main": "index.js",
   "scripts": {
@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/danigb/music.notation/issues"
   },
-  "homepage": "https://github.com/danigb/music.notation#readme"
+  "homepage": "https://github.com/danigb/music.notation#readme",
+  "devDependencies": {
+    "vows": "^0.8.1"
+  }
 }
