@@ -1,0 +1,30 @@
+{
+  "name": "music.notation",
+  "version": "0.0.0",
+  "description": "The pluggable music notation",
+  "main": "index.js",
+  "scripts": {
+    "test": "vows --spec test/*.js",
+    "docs": "docme API.md",
+    "dist": "browserify index.js > dist/music.notation.js && browserify index.js | uglifyjs > dist/music.notation.min.js && ls -all dist/*",
+    "coverage": "istanbul cover vows test/*.js",
+    "cover": "npm run coverage && open ./coverage/lcov-report/index.html",
+    "benchmarks": "node test/benchmarks/*.js",
+    "climate": "npm run coverage && npm run codeclimate",
+    "codeclimate": "CODECLIMATE_REPO_TOKEN= codeclimate-test-reporter < coverage/lcov.info"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danigb/music.notation.git"
+  },
+  "keywords": [
+    "music",
+    "music.notation"
+  ],
+  "author": "danigb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danigb/music.notation/issues"
+  },
+  "homepage": "https://github.com/danigb/music.notation#readme"
+}
