@@ -70,8 +70,8 @@ vows.describe('intervals').addBatch({
       assert.equal(intervals('8b 9b 10b 11b 12b 13b 14b'), '8d 9m 10m 11d 12d 13m 14m')
     },
     'malformed': function () {
-      assert.equal(notation.str(null))
-      assert.equal(notation.str('blah'))
+      assert.equal(notation.str(null), null)
+      assert.equal(notation.str('blah'), null)
     }
   }
 }).export(module)

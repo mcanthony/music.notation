@@ -6,6 +6,7 @@ function fillStr (num, char) { return Array(num + 1).join(char) }
 var LETTERS = 'CDEFGAB'
 var REGEX = /^([a-gA-G])(#{1,4}|b{1,4}|x{1,2}|)(\d*)$/
 
+var cache = {}
 var notation = {}
 
 /**
@@ -44,14 +45,21 @@ var notation = {}
  * pitch(pitch('fx')) // => 'F##'
  */
 notation.arr = function (src) {
-  return Array.isArray(src) ? src : parsePitch(src) || parseInterval(src)
+  if (Array.isArray(src)) return src
+  return src in cache ? cache[src] : cache[src] = parsePitch(src) || parseInterval(src)
+}
+
+function toString (arr) {
+  if (arr.length === 1 || arr.length === 2) return buildPitch(arr)
+  else if (arr.length === 3) return buildInterval(arr)
+  else if (arr.length === 0) return null
+  else return buildPitch(arr)
 }
 
 notation.str = function (arr) {
-  if (!arr || !arr.length) return null
-  if (arr.length === 1 || arr.length === 2) return buildPitch(arr)
-  else if (arr.length === 3) return buildInterval(arr)
-  else return buildPitch(arr)
+  if (!Array.isArray(arr)) return null
+  var str = '|' + arr[0] + '|' + arr[1] + '|' + arr[2] + '|' + arr[3] + '|' + arr[4]
+  return str in cache ? cache[str] : cache[str] = toString(arr)
 }
 
 /**
